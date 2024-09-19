@@ -4,7 +4,7 @@ public class BillCalculator {
 
 	/** Calculates the subtotal for an array of bill items.
 	 * 
-	 * @precondition items != null
+	 * @precondition items != null && array cannot be empty
 	 * @postcondition none
 	 * 
 	 * @return subtotal The subtotal of all the items
@@ -16,6 +16,9 @@ public class BillCalculator {
 		}
 		double subtotal = 0;
 		for (int index = 0; index < items.length; index++) {
+			if (index == 0 && items[index] == null) {
+				throw new IllegalArgumentException("Array is empty");
+			}
 			if (items[index] != null) {
 				subtotal = subtotal + items[index].getAmount();
 			} else {
