@@ -31,7 +31,7 @@ public class BillCalculator {
 	
 	/** Calculates the tax for a set of BillItems
 	 * 
-	 * @precondition items != null
+	 * @precondition items != null && array cannot be null
 	 * @postcondition none
 	 * 
 	 * @param items The array of BillItems that will be used
@@ -50,7 +50,7 @@ public class BillCalculator {
 	
 	/** Calculates the tip for a set of BillItems
 	 * 
-	 * @precondition items != null
+	 * @precondition items != null && array cannot be empty
 	 * @postcondition none
 	 * 
 	 * @param items The array of BillItems that will be used
@@ -65,5 +65,27 @@ public class BillCalculator {
 			throw new IllegalArgumentException("Array is empty");
 		}
 		return BillCalculator.getSubtotal(tipItems) * 0.2;
+	}
+	
+	/** Calculates the total, including tax and tip for an array of BillItems
+	 * 
+	 * @precondition items != null && array cannot be empty
+	 * @postcondition none
+	 * 
+	 * @param items The array of Bill Items that will be calculated
+	 * @return the total for every item in the bill together, including tax and tip
+	 */
+	public static double getTotal(BillItem[] items) {
+		BillItem[] allItems = items;
+		if (allItems == null) {
+			throw new IllegalArgumentException("Must have Bill Items");
+		}
+		if (allItems[0] == null) {
+			throw new IllegalArgumentException("Array is empty");
+		}
+		double subtotal = BillCalculator.getSubtotal(allItems);
+		double tax = BillCalculator.getTax(allItems);
+		double tip = BillCalculator.getTip(allItems);
+		return subtotal + tax + tip;
 	}
 }
