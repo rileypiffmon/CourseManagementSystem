@@ -47,4 +47,23 @@ public class BillCalculator {
 		}
 		return BillCalculator.getSubtotal(taxedItems) * 0.1;
 	}
+	
+	/** Calculates the tip for a set of BillItems
+	 * 
+	 * @precondition items != null
+	 * @postcondition none
+	 * 
+	 * @param items The array of BillItems that will be used
+	 * @return the tip for the subtotal of the items in the array
+	 */
+	public static double getTip(BillItem[] items) {
+		BillItem[] tipItems = items;
+		if (tipItems == null) {
+			throw new IllegalArgumentException("Must have Bill Items");
+		}
+		if (tipItems[0] == null) {
+			throw new IllegalArgumentException("Array is empty");
+		}
+		return BillCalculator.getSubtotal(tipItems) * 0.2;
+	}
 }

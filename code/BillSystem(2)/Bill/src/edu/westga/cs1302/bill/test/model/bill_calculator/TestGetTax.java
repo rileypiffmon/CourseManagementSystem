@@ -26,7 +26,7 @@ class TestGetTax {
 	}
 	
 	@Test
-	public void testSubtotalIsCalculatedCorrectlyInFullArray() {
+	public void testTaxIsCalculatedCorrectlyInFullArray() {
 		BillItem[] testItems = new BillItem[3];
 		testItems[0] = new BillItem("test", 12.2);
 		testItems[1] = new BillItem("test", 8.5);
@@ -36,7 +36,7 @@ class TestGetTax {
 	}
 	
 	@Test
-	public void testSubtotalIsCalculatedCorrectlyWithTwoItem() {
+	public void testTaxIsCalculatedCorrectlyWithTwoItem() {
 		BillItem[] testItems = new BillItem[3];
 		testItems[0] = new BillItem("test", 12.2);
 		testItems[1] = new BillItem("test", 8.5);
@@ -45,7 +45,7 @@ class TestGetTax {
 	}
 	
 	@Test
-	public void testSubtotalIsCalculatedCorrectlyWithOneItem() {
+	public void testTaxIsCalculatedCorrectlyWithOneItem() {
 		BillItem[] testItems = new BillItem[3];
 		testItems[0] = new BillItem("test", 12.2);
 		double tax = BillCalculator.getTax(testItems);
