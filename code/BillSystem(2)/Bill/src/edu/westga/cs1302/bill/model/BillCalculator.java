@@ -7,6 +7,7 @@ public class BillCalculator {
 	 * @precondition items != null && array cannot be empty
 	 * @postcondition none
 	 * 
+	 * @param items The array of BillItems being calculated
 	 * @return subtotal The subtotal of all the items
 	 * 
 	 */
@@ -26,5 +27,24 @@ public class BillCalculator {
 			}
 		}
 		return subtotal;
+	}
+	
+	/** Calculates the tax for a set of BillItems
+	 * 
+	 * @precondition items != null
+	 * @postcondition none
+	 * 
+	 * @param items The array of BillItems that will be used
+	 * @return the tax for the subtotal of the items in the array
+	 */
+	public static double getTax(BillItem[] items) {
+		BillItem[] taxedItems = items;
+		if (taxedItems == null) {
+			throw new IllegalArgumentException("Must have Bill Items");
+		}
+		if (taxedItems[0] == null) {
+			throw new IllegalArgumentException("Array is empty");
+		}
+		return BillCalculator.getSubtotal(taxedItems) * 0.1;
 	}
 }
